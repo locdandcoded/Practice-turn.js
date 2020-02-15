@@ -1,1 +1,55 @@
-
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="turn.js/turn.js"></script>
+<style type="text/css">
+    body{
+        background:white;
+        }
+    #magazine{
+        width:1002px;
+        height:500px;
+    }
+    #magazine .turn-page{
+        background-color:navy;
+        background-size:100% 100%;
+    }
+</style>
+</head>
+<body>
+    <div id="magazine">
+        <div class="hard"><img src="pics/code.jpg" alt="ebony" height="500" width="500"></div>
+        <div class="hard"></div>
+        <div><img src="pics/eyes.png" alt="ebony" height="500" width="500"></div>
+        <div><img src="pics/red or blue.png" alt="ebony" height="500" width="500"></div>
+        <div><img src="pics/reflection.jpg" alt="ebony" height="500" width="500"></div>
+        <div><img src="pics/think.jpg" alt="ebony" height="500" width="500"></div>
+        <div><img src="pics/download.jpg" alt="ebony" height="500" width="500"></div>
+        
+        <div class="hard"></div>
+        <div class="hard"></div>
+     </div>
+    <script type="text/javascript">
+        $(window).ready(function() {
+            $('#magazine').turn({
+                                display: 'double',
+                                acceleration: true,
+                                gradients: !$.isTouch,
+                                elevation:50,
+                                when: {
+                                    turned: function(e, page) {
+                                         /*console.log('Current view: ', $(this).turn('view'));*/
+                                    }
+                                }
+                             });
+        });
+        $(window).bind('keydown', function(e){
+            if (e.keyCode==37)
+                $('#magazine').turn('previous');
+            else if (e.keyCode==39)
+                $('#magazine').turn('next');
+        });
+    </script>
+    </body>
+    </html>
